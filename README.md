@@ -11,7 +11,10 @@ Examples:
   Third  Monday  of month:  gencal -dow 2 -week 3 -count 20  
   Second Tuesday of month:  gencal -dow 3 -week 2 -count 35  
   First and Third Monday of month:  gencal -dow 2 -week 1 -week 3 -count 10  
-AWS </home/tms/src/gencal>$ cat event.csv   
+
+The following was produced with this command:  
+  gencal -dow 2 -week 1 -week 3 -count 16 -suffix ',19:00:00,1,1' > event.csv  
+  
 Today: 6/10/2021 11:22:7 5  
 First: 6/1/2021 11:22:7 3  
 2021-06-07,19:00:00,1,1  
@@ -30,7 +33,8 @@ First: 6/1/2021 11:22:7 3
 2021-12-20,19:00:00,1,1  
 2022-01-03,19:00:00,1,1  
 2022-01-17,19:00:00,1,1  
-AWS </home/tms/src/gencal>$ cat LoadEvent.sql  
+  
+And can be loaded into MySQL with this script:  
 
 load data local infile 'event.csv'  
 into table event  
