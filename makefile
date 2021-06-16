@@ -6,6 +6,8 @@ DIR = /usr/local/bin
 
 $(PROG): $(OBJ)
 	gcc $(LDFLAGS) -o $(PROG) $(OBJ)
+	strip $(PROG)
+	ls -l $(PROG)
 
 $(OBJ): gencal.c
 	gcc $(CFLAGS) -c gencal.c -o $(OBJ)
