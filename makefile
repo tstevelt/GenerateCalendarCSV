@@ -13,7 +13,7 @@ $(OBJ): gencal.c
 	gcc $(CFLAGS) -c gencal.c -o $(OBJ)
 
 install:
-	cp -pv $(PROG) $(DIR)/$(PROG)
+	mv $(PROG) $(DIR)/$(PROG)
 
 clean:
 	rm -f $(OBJ) $(PROG)
