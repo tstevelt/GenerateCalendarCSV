@@ -1,24 +1,25 @@
+PROG = GenerateCalendarCSV
+LIB = GenerateCalendarCSV.a
+DEF = /usr/local/include
+PRG = /usr/local/bin/gencal
 
-CFLAGS = -Wall
-PROG = gencal
-OBJ = gencal.o
-DIR = /usr/local/bin
+FILES = \
+	$(LIB)(gencal.o)
 
-$(PROG): $(OBJ)
-	gcc $(LDFLAGS) -o $(PROG) $(OBJ)
-	strip $(PROG)
-	ls -l $(PROG)
+.SILENT:
 
-$(OBJ): gencal.c
-	gcc $(CFLAGS) -c gencal.c -o $(OBJ)
+$(PRG): $(LIB) $(XLIB)
+	echo "using gcc to load $(PRG)"
+	gcc -o $(PRG) $(LIB) $(XLIB)
 
-install:
-	mv $(PROG) $(DIR)/$(PROG)
+$(LIB): $(FILES)
 
 clean:
-	rm -f $(OBJ) $(PROG)
-	
+	rm -f $(LIB)
+
 all:
 	make clean
 	make
+
+.PRECIOUS: $(LIB)
 
